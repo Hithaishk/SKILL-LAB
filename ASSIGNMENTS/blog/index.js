@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(cookieParser())
 
 mongoose
-  .connect("mongodb+srv://hithaish:Hithaish%40123@cluster0.larynjs.mongodb.net/", {
+  .connect("mogoose:url//Enter you url", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
