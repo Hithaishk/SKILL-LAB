@@ -11,16 +11,7 @@ const blogController = {
     }
   },
 
-  // createBlog: async (req, res) => {
-  //   try {
-  //     const { title, content, author } = req.body;
-  //     const newBlog = await Blog.create({ title, content, author });
-  //     res.json({ message: 'Blog created successfully.', blog: newBlog });
-  //   } catch (error) {
-  //     console.error(error);
-  //     res.status(500).json({ error: 'Internal Server Error' });
-  //   }
-  // },
+ 
   createBlog: async (req, res) => {
     try {
       const { title, content } = req.body;

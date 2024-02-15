@@ -1,19 +1,7 @@
 const Author = require('../models/Author');
 
 const authController = {
-  // login: async (req, res) => {
-  //   try {
-  //     const { username, password } = req.body;
-  //     const author = await Author.findOne({ username, password });
-  //     if (!author) {
-  //       return res.status(401).json({ error: 'Invalid credentials.' });
-  //     }
-  //     res.json({ message: 'Login successful.', author });
-  //   } catch (error) {
-  //     console.error(error);
-  //     res.status(500).json({ error: 'Internal Server Error' });
-  //   }
-  // },
+  
   login: async (req, res) => {
     try {
       const { username, password } = req.body;
