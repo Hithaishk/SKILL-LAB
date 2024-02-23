@@ -8,7 +8,7 @@ function verifyProperties(properties){
 
             if(!(element in req.body)){             
 
-                res.json({"data":"Required data is not found"});
+                return res.send({"data":"Required data is not found"});
 
             }
         }

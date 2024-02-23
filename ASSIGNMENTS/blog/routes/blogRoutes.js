@@ -6,7 +6,7 @@ const verify=function(req,res,next){
     let body=req.body;    
     
     if("title" in body){
-
+        next();
     }
     else{
         res.json({"data":"Title required"});
