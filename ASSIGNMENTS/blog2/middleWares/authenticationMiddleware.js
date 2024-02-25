@@ -11,14 +11,14 @@ const authenticationMiddleware = async (req, res, next) => {
 
   try {
 
-    const author = await Author.findById(userId);
+    const author = await Author.findOne({ id: userId });
 
     if (!author) {
       return res.status(401).json({ error: 'Unauthorized - Invalid user ID' });
     }
 
     // Attach the user information to the request for later use in route handlers
-    req.user = { id: author._id, username: author.username, subscribed: author.subscribed };
+    req.user = { id: author.id, username: author.username, subscribed: author.subscribed };
     // Proceed to the next middleware or route handler
     next();
   } catch (error) {

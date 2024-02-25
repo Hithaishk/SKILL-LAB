@@ -12,7 +12,7 @@ const authController = {
       }
 
       // Set a cookie with the author's ID
-      res.cookie('userId', author._id, { httpOnly: true });
+      res.cookie('userId', author.id, { httpOnly: true });
 
       res.json({ message: 'Login successful.', author });
     } catch (error) {
@@ -23,12 +23,12 @@ const authController = {
 
   register: async (req, res) => {
     try {
-      const { username, password,subscribed } = req.body;
+      const {id, username, password,subscribed } = req.body;
       const existingAuthor = await Author.findOne({ username });
       if (existingAuthor) {
         return res.status(400).json({ error: 'Username already exists.' });
       }
-      const newAuthor = await Author.create({ username, password,subscribed });
+      const newAuthor = await Author.create({id, username, password,subscribed });
       res.json({ message: 'Registration successful.', author: newAuthor });
     } catch (error) {
       console.error(error);

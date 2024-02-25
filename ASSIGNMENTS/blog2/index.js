@@ -25,10 +25,12 @@ mongoose
 const authRoutes = require("./routes/authRoutes");
 const blogRoutes = require("./routes/blogRoutes");
 const searchRoutes = require("./routes/searchRoutes");
+const aggre=require("./routes/aggRoutes")
 
 app.use("/auth", authRoutes);
 app.use("/blogs", blogRoutes);
 app.use("/search", searchRoutes);
+app.use("/aggregation",aggre);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
