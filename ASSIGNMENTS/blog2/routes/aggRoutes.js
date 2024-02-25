@@ -6,6 +6,7 @@ const authenticationMiddleware = require('../middleWares/authenticationMiddlewar
 
 
 // router.get('/registered-users', blogController.getBlogsForRegisteredUsers);
+router.get('/performance', blogController.getPerformance);
 router.get('/subscribed-users',authenticationMiddleware, blogController.getBlogsForUsers);
 router.get('/reviews-rating', blogController.getReviewsAndRating);
 router.get('/date-range', blogController.getBlogsInDateRange);

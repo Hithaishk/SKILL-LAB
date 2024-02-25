@@ -2,6 +2,16 @@
 const Blog = require('../models/Blog');
 
 const aggController = {
+
+  getPerformance: async (req, res) => {
+    try {
+      const result = await Blog.find().explain('executionStats');
+      res.json(result);
+    } catch (error) {
+      console.error('Error performing analysis:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  },
   getBlogsForUsers: async (req, res) => {
     try {
       const isRegisteredUser = req.user && !req.user.subscribed;
