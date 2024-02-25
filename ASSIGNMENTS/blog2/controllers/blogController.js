@@ -5,21 +5,14 @@ const blogCache = new NodeCache();
 const blogController = {
   getAllBlogs: async (req, res) => {
     try {
-      // Check if the data is in the cache
       const cachedBlogs = blogCache.get("allBlogs");
 
       if (cachedBlogs) {
-        // If data is in the cache, retrieve and return it
         console.log("Retrieving from cache");
         res.json({ blogs: cachedBlogs });
       } else {
-        // If data is not in the cache, fetch from Blog
         const blogs = await Blog.find();
-
-        // Convert Mongoose documents to plain JavaScript objects
         const blogsData = blogs.map((blog) => blog.toObject());
-
-        // Store the fetched data in the cache
         blogCache.set("allBlogs", blogsData);
         console.log("Data stored in cache:", blogsData);
 
@@ -70,10 +63,7 @@ const blogController = {
 
   getBlogsByCategory: async (req, res) => {
     try {
-      // Controller logic for fetching blog posts based on a specified category
       const category = req.params.category;
-
-      // Use 'await Blog.find({ category })' for database queries
       const blogs = await Blog.find({ category });
 
       res.json(blogs);
@@ -87,12 +77,9 @@ const blogController = {
       const authorId = req.params.authorId;
       const blogs = await Blog.find();
 
-      // Check if the user is subscribed
       if (req.user && req.user.subscribed) {
-        // User is subscribed, provide access to the entire content
         res.json({ blogs });
       } else {
-        // User is not subscribed, provide access to 'blogTitle' only
         const filteredBlogs = blogs.map((blog) => ({
           _id: blog._id,
           title: blog.title,

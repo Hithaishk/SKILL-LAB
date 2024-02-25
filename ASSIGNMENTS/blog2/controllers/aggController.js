@@ -16,7 +16,7 @@ const aggController = {
                 if: {
                   $and: [
                     isRegisteredUser,
-                    { $ne: ['$content', null] }, // Only add content if it's not null
+                    { $ne: ['$content', null] }, 
                   ],
                 },
                 then: '$content',
@@ -31,7 +31,7 @@ const aggController = {
             content: 1,
           },
         },
-        // Add other stages for processing or projecting data
+        
       ];
   
       const blogs = await Blog.aggregate(pipeline).exec();
@@ -88,7 +88,7 @@ const aggController = {
             },
           },
         },
-        // Add other stages for processing or projecting data
+      
       ];
 
       const blogs = await Blog.aggregate(pipeline).exec();
@@ -108,7 +108,7 @@ const aggController = {
             category,
           },
         },
-        // Add other stages for processing or projecting data
+        
       ];
 
       const blogs = await Blog.aggregate(pipeline).exec();
