@@ -1,8 +1,12 @@
 const Order = require('../models/Order');
 const twilio = require('twilio');
 
-  // Make sure to replace YOUR_TWILIO_ACCOUNT_SID and YOUR_TWILIO_AUTH_TOKEN with your Twilio credentials
-  const twilioClient = twilio(YOUR_TWILIO_ACCOUNT_SID, YOUR_TWILIO_AUTH_TOKEN);
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+
+const twilioClient = new twilio.Twilio(accountSid, authToken);
+
+
 const createOrder = async (req, res) => {
     const userId = req.cookies.userId;
     const { food_id,  order_id, status } = req.body;
